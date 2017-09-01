@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>排行榜</title>
+		
+		<script type="text/javascript" src="js2/ajax.js" ></script>
+		<script>
+			onload = function(){
+				var oList = document.getElementById("list");
+
+				setInterval(getRank, 5000);		
+				
+				getRank();
+				function getRank(){
+					//http://60.205.181.47/myPHPCode4/getRank.php
+					ajax({
+						type: "get",
+						url: "http://60.205.181.47/myPHPCode4/getRank.php",
+						data:{},
+						async: true,
+						success: function(data){
+							console.log(data);
+							
+							//json解析
+							var arr =  JSON.parse(data);
+							
+							oList.innerHTML = "";
+							for (var i=0; i<arr.length; i++){
+								var obj = arr[i];
+								
+								var li = document.createElement("li");
+								li.innerHTML =  (i+1) + ". " + obj.name + ":" + obj.score;
+								oList.appendChild(li);
+							}
+							
+						},
+						error: function(){
+							console.log("error");
+						}
+					})
+				}
+				
+				
+				
+			}
+		</script>
+	</head>
+	<body>
+		
+		<ul id="list">
+			<!--<li>张三 : 100</li>-->
+		</ul>
+		
+	</body>
+</html>

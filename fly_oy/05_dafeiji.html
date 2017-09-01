@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/dafeiji.css"/>
+		
+		<script type="text/javascript" src="js2/common.js" ></script>
+		<script type="text/javascript" src="js2/gameEngine.js" ></script>
+		<script type="text/javascript" src="js2/myPlane.js" ></script>
+		<script type="text/javascript" src="js2/bullet.js" ></script>
+		<script type="text/javascript" src="js2/enemy.js" ></script>
+		<script type="text/javascript" src="js2/ajax.js" ></script>
+		
+		<script>
+			onload = function(){
+				
+				var oList = document.getElementById("list");
+				var aLi = document.getElementsByTagName("li");
+				for (var i=0; i<aLi.length; i++){
+					//点击li
+					aLi[i].onclick = function(){
+						
+						//进入游戏加载页面
+						//先清除ul
+						oList.parentNode.removeChild(oList);
+						
+						//获取value值(发射子弹的频率)
+						var fireInterval = this.value - 0;
+						myPlane.fireInterval = fireInterval; 
+						
+						//游戏
+						//加载游戏
+						
+						//开始游戏
+						//游戏引擎
+						// cocos2dx, Unity3D, cocos3dx...
+						
+						//游戏引擎: 碰撞检测, 键盘监听, 加载游戏, ...     
+						//导演, 场景, 演员
+						
+						
+						//开始游戏
+						gameEngine.init().start();
+						
+					}
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		<div id="main" class="main">
+			<ul id="list">
+				<li value="1000">超级困难</li>
+				<li value="500">非常困难</li>
+				<li value="300">比较困难</li>
+				<li value="100">春哥附体</li>
+			</ul>
+		</div>
+	</body>
+</html>
